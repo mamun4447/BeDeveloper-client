@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaChessQueen } from "react-icons/fa";
+import Courses from "./Courses";
 
 const Home = () => {
   return (
@@ -67,42 +68,7 @@ const Home = () => {
         <div className="relative px-4 sm:px-0">
           <div className="absolute inset-0 bg-gray-100 h-12/9" />
           <div className="relative grid grid-cols-3 mx-auto overflow-hidden bg-white  rounded shadow sm:divide-y-0 sm:divide-x sm:max-w-screen-sm sm:grid-cols-3 lg:max-w-screen-md">
-            <Link
-              to="/"
-              className="card w-full bg-base-100 shadow-xl image-full h-full"
-            >
-              <figure>
-                <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-              </div>
-            </Link>
-            <Link
-              to="/"
-              className="card w-full bg-base-100 shadow-xl image-full h-80"
-            >
-              <figure>
-                <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-              </div>
-            </Link>
-            <Link
-              to="/"
-              className="card w-full bg-base-100 shadow-xl image-full"
-            >
-              <figure>
-                <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-              </div>
-            </Link>
+            <Courses />
           </div>
         </div>
       </div>
