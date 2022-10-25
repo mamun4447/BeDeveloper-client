@@ -1,43 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/UserContext";
+import { DiCelluloid } from "react-icons/di";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useContext(AuthContext);
   return (
     <div>
-      <div class="px-4 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-        <div class="relative flex items-center justify-between">
+      <div className="px-4 py-3  sm:max-w-xl md:max-w-full md:px-24 lg:px-8 shadow-xl">
+        <div className="relative flex items-center justify-between">
           <Link
             to="/"
             aria-label="Company"
             title="Company"
-            class="inline-flex items-center"
+            className="inline-flex items-center"
           >
-            <svg
-              class="w-8 text-deep-purple-accent-400"
-              viewBox="0 0 24 24"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeMiterlimit="10"
-              stroke="currentColor"
-              fill="none"
-            >
-              <rect x="3" y="1" width="7" height="12" />
-              <rect x="3" y="17" width="7" height="6" />
-              <rect x="14" y="1" width="7" height="6" />
-              <rect x="14" y="11" width="7" height="12" />
-            </svg>
-            <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-              Company
+            <ul className="text-5xl">
+              <DiCelluloid />
+            </ul>
+            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+              BeDeveloper
             </span>
           </Link>
-          <ul class="flex items-center hidden space-x-8 lg:flex">
+          <ul className="flex items-center hidden space-x-8 lg:flex">
             {/* -------Toggle------ */}
             <li className="flex items-center">
-              <span className="label-text">Dark</span>
-              <input type="checkbox" className="toggle" />
               <span className="label-text">Light</span>
+
+              <input type="checkbox" className="toggle" />
+              <span className="label-text">Dark</span>
             </li>
             {/* --------Home------- */}
             <li>
@@ -45,7 +37,7 @@ const Nav = () => {
                 to="/"
                 aria-label="Our product"
                 title="Our product"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
               >
                 Home
               </Link>
@@ -56,9 +48,20 @@ const Nav = () => {
                 to="/courses"
                 aria-label="Our product"
                 title="Our product"
-                class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
               >
                 Courses
+              </Link>
+            </li>
+            {/* ----------FAQ------- */}
+            <li>
+              <Link
+                to="/faq"
+                aria-label="Our product"
+                title="Our product"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              >
+                FAQ
               </Link>
             </li>
             {/* ---------Blogs---------- */}
@@ -86,41 +89,59 @@ const Nav = () => {
 
             {/* Condition if user available */}
             {/* SignUp */}
-            <li>
-              <Link
-                to="/signup"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                aria-label="Sign up"
-                title="Sign up"
-              >
-                Sign up
-              </Link>
-            </li>
-            {/* Login */}
-            <li>
-              <Link
-                to="/login"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                aria-label="Sign up"
-                title="Sign up"
-              >
-                Login
-              </Link>
-            </li>
+            {user ? (
+              <ul className="flex gap-3">
+                <li>
+                  <Link
+                    to="/signup"
+                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    aria-label="Sign up"
+                    title="Sign up"
+                  >
+                    Sign up
+                  </Link>
+                </li>
+                <li>{user.displayName}</li>
+              </ul>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    to="/signup"
+                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    aria-label="Sign up"
+                    title="Sign up"
+                  >
+                    Sign up
+                  </Link>
+                </li>
+                {/* Login */}
+                <li>
+                  <Link
+                    to="/login"
+                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    aria-label="Sign up"
+                    title="Sign up"
+                  >
+                    Login
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
 
           {/* ------------------------
           For Midium and Small display
           ---------------------------- */}
 
-          <div class="lg:hidden ">
+          <div className="lg:hidden ">
             <button
               aria-label="Open Menu"
               title="Open Menu"
               className="p-2 -mr-1 relative top-1 right-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
               onClick={() => setIsMenuOpen(true)}
             >
-              <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
+              <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
                   d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
@@ -136,9 +157,9 @@ const Nav = () => {
               </svg>
             </button>
             {isMenuOpen && (
-              <div class="absolute top-0 left-0 w-full">
-                <div class="p-5 bg-white border rounded shadow-sm">
-                  <div class="flex items-center justify-between mb-4">
+              <div className="absolute top-0 left-0 w-full">
+                <div className="p-5 bg-white border rounded shadow-sm">
+                  <div className="flex items-center justify-between mb-4">
                     <div>
                       <Link
                         href="/"
@@ -147,7 +168,7 @@ const Nav = () => {
                         className="inline-flex items-center"
                       >
                         <svg
-                          class="w-8 text-deep-purple-accent-400"
+                          className="w-8 text-deep-purple-accent-400"
                           viewBox="0 0 24 24"
                           strokeLinejoin="round"
                           strokeWidth="2"
@@ -161,7 +182,7 @@ const Nav = () => {
                           <rect x="14" y="1" width="7" height="6" />
                           <rect x="14" y="11" width="7" height="12" />
                         </svg>
-                        <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+                        <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                           Company
                         </span>
                       </Link>
@@ -184,8 +205,15 @@ const Nav = () => {
                   </div>
                   <nav>
                     <ul className="space-y-4">
+                      {/* -------Toggle------ */}
+                      <li className="flex items-center">
+                        <span className="label-text">Light</span>
+
+                        <input type="checkbox" className="toggle" />
+                        <span className="label-text">Dark</span>
+                      </li>
+                      {/* ---------Home---------- */}
                       <li>
-                        {/* ---------Home---------- */}
                         <Link
                           to="/"
                           aria-label="Our product"
@@ -204,6 +232,17 @@ const Nav = () => {
                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
                           Courses
+                        </Link>
+                      </li>
+                      {/* ----------FAQ------- */}
+                      <li>
+                        <Link
+                          to="/faq"
+                          aria-label="Our product"
+                          title="Our product"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        >
+                          FAQ
                         </Link>
                       </li>
                       {/* --------------Blogs------------ */}
@@ -228,29 +267,46 @@ const Nav = () => {
                           About Us
                         </Link>
                       </li>
-
-                      {/* -----------Log In------------ */}
-                      <li>
-                        <Link
-                          to="/login"
-                          aria-label="About us"
-                          title="About us"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          LogIn
-                        </Link>
-                      </li>
-                      {/* ----------Sign Up---------- */}
-                      <li>
-                        <Link
-                          to="/signup"
-                          aria-label="About us"
-                          title="About us"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          SignUp
-                        </Link>
-                      </li>
+                      {/* <-------------SignIn,SignUp or User Conditional------------> */}
+                      {user ? (
+                        <ul className="flex-col">
+                          <li className="mb-3">
+                            <Link
+                              to="/signup"
+                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                              aria-label="Sign up"
+                              title="Sign up"
+                            >
+                              Sign up
+                            </Link>
+                          </li>
+                          <li>{user.displayName}</li>
+                        </ul>
+                      ) : (
+                        <>
+                          <li>
+                            <Link
+                              to="/signup"
+                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                              aria-label="Sign up"
+                              title="Sign up"
+                            >
+                              Sign up
+                            </Link>
+                          </li>
+                          {/* Login */}
+                          <li>
+                            <Link
+                              to="/login"
+                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                              aria-label="Sign up"
+                              title="Sign up"
+                            >
+                              Login
+                            </Link>
+                          </li>
+                        </>
+                      )}
                     </ul>
                   </nav>
                 </div>

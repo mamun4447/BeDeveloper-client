@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const SingUp = () => {
   return (
@@ -69,13 +70,23 @@ const SingUp = () => {
                 />
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn btn-accent text-white hover:translate-y-1">
+                  Register
+                </button>
               </div>
               <div>
                 Already have an account?{" "}
                 <Link to="/login" className="underline underline-offset-1">
                   LogIn
                 </Link>
+              </div>
+              <div className="flex justify-center items-center gap-5 ">
+                <i className="bg-slate-200 text-2xl p-2 rounded-full cursor-pointer hover:translate-y-1 hover:bg-black hover:text-white">
+                  <FaGoogle />
+                </i>
+                <i className="bg-slate-200 text-2xl p-2 rounded-full cursor-pointer hover:translate-y-1 hover:bg-black hover:text-white">
+                  <FaGithub />
+                </i>
               </div>
             </div>
           </div>

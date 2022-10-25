@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "./Home";
 import Main from "../layout/Main";
-import Courses from "./Courses";
+import Courses from "./Courses/Courses";
 import AboutUs from "./AboutUs";
 import LogIn from "./LogIn";
 import SingUp from "./SingUp";
@@ -16,6 +16,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch("http://localhost:5000/data"),
       },
       {
         path: "/courses",
