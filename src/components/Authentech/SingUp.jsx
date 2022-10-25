@@ -12,7 +12,7 @@ const SingUp = () => {
     const from = event.target;
     const name = from.name.value;
     const email = from.email.value;
-    const photoURL = from.photoURL.value;
+    const photoURL = from.imageURL.value;
     const password = from.password.value;
     const confirmPassword = from.confirmPass.value;
 
@@ -46,7 +46,7 @@ const SingUp = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="email"
+                  placeholder="full name"
                   className="input input-bordered"
                   required
                 />
@@ -65,12 +65,12 @@ const SingUp = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Image URL</span>
+                  <span className="label-text">Photo URL</span>
                 </label>
                 <input
                   type="text"
                   name="imageURL"
-                  placeholder="email"
+                  placeholder="photo url"
                   className="input input-bordered"
                 />
               </div>
@@ -93,7 +93,7 @@ const SingUp = () => {
                 <input
                   type="password"
                   name="confirmPass"
-                  placeholder="password"
+                  placeholder="confirm password"
                   className="input input-bordered"
                   required
                 />
