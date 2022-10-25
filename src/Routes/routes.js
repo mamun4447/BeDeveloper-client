@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "./Home";
+import Home from "../components/NavComponent/Home";
 import Main from "../layout/Main";
-import Courses from "./Courses/Courses";
-import AboutUs from "./AboutUs";
-import LogIn from "./LogIn";
-import SingUp from "./SingUp";
-import Blogs from "./Blogs";
-import Details from "./Details";
+import Courses from "../components/Courses/Courses";
+import AboutUs from "../components/NavComponent/AboutUs";
+import LogIn from "../components/Authentech/LogIn";
+import SingUp from "../components/Authentech/SingUp";
+import Blogs from "../components/NavComponent/Blogs";
+import Details from "../components/Details";
 
 export const router = createBrowserRouter([
   {

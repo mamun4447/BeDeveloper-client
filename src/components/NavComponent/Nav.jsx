@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/UserContext";
+import { AuthContext } from "../../context/UserContext";
 import { DiCelluloid } from "react-icons/di";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { user, LogOut } = useContext(AuthContext);
   return (
     <div>
       <div className="px-4 py-3  sm:max-w-xl md:max-w-full md:px-24 lg:px-8 shadow-xl">
@@ -92,14 +92,14 @@ const Nav = () => {
             {user ? (
               <ul className="flex gap-3">
                 <li>
-                  <Link
-                    to="/signup"
+                  <button
+                    onClick={LogOut}
                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                     aria-label="Sign up"
                     title="Sign up"
                   >
-                    Sign up
-                  </Link>
+                    SignOut
+                  </button>
                 </li>
                 <li>{user.displayName}</li>
               </ul>
@@ -277,7 +277,7 @@ const Nav = () => {
                               aria-label="Sign up"
                               title="Sign up"
                             >
-                              Sign up
+                              SignOut
                             </Link>
                           </li>
                           <li>{user.displayName}</li>

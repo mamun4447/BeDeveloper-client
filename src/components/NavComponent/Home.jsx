@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaChessQueen } from "react-icons/fa";
-import SingleCourse from "./SingleCourse";
+import SingleCourse from "../SingleCourse";
 
 const Home = () => {
   const datas = useLoaderData();

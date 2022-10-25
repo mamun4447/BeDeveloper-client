@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { AuthContext } from "../../context/UserContext";
 
 const SingUp = () => {
+  const { createUser } = useContext(AuthContext);
+  const [error, setError] = useState(null);
+
+  //------Event Listenners-----//
+  const handleSubmit = (event) => {
+    const from = event.target;
+    const name = from.name.value;
+    const email = from.email.value;
+    const photoURL = from.photoURL.value;
+    const password = from.password.value;
+    const confirmPassword = from.confirmPass.value;
+
+    if (password !== confirmPassword) {
+      setError("password doesn't match!!");
+    } else {
+      createUser(email, password)
+        .then((result) => {
+          console.log(result.user);
+          setError("");
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
+    }
+  };
+
   return (
     <div>
       <div className=" bg-base-200">
@@ -11,7 +38,7 @@ const SingUp = () => {
             <h1 className="text-5xl font-bold py-2">Login now!</h1>
           </div>
           <div className="rounded-lg flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
+            <form onSubmit={handleSubmit} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Full Name</span>
@@ -21,6 +48,7 @@ const SingUp = () => {
                   name="name"
                   placeholder="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -32,6 +60,7 @@ const SingUp = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -88,7 +117,7 @@ const SingUp = () => {
                   <FaGithub />
                 </i>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
