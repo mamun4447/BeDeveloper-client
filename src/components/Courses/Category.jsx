@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SingleCourse from "./SingleCourse";
 
 const Category = ({ data }) => {
   const { title, id } = data;

@@ -10,6 +10,8 @@ import Details from "../components/Details";
 import ErrorPage from "../components/ErrorPage";
 import CheckOut from "../components/Courses/CheckOut";
 import FAQ from "../components/NavComponent/FAQ";
+import UserProfile from "../components/UserProfile";
+import PrivetRoutes from "../components/PrivetRoute/PrivetRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -35,7 +37,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
-        element: <CheckOut />,
+        element: (
+          <PrivetRoutes>
+            <CheckOut />
+          </PrivetRoutes>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/data/${params.id}`),
       },
@@ -60,6 +66,10 @@ export const router = createBrowserRouter([
       {
         path: "/faq",
         element: <FAQ />,
+      },
+      {
+        path: "/profile",
+        element: <UserProfile />,
       },
     ],
   },

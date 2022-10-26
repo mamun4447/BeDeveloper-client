@@ -1,33 +1,92 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../context/UserContext";
+import { toast } from "react-toastify";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const SingUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const provider = new GoogleAuthProvider();
+  const { user, createUser, UpdateProfile, googleSignIn } =
+    useContext(AuthContext);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   //------Event Listenners-----//
   const handleSubmit = (event) => {
-    const from = event.target;
-    const name = from.name.value;
-    const email = from.email.value;
-    const photoURL = from.imageURL.value;
-    const password = from.password.value;
-    const confirmPassword = from.confirmPass.value;
+    event.preventDefault();
 
-    if (password !== confirmPassword) {
-      setError("password doesn't match!!");
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photoURL = form.imageURL.value;
+    const password = form.password.value;
+    const confirmPassword = form.confirmPass.value;
+
+    if (user) {
+      setError("User all ready loged in!!");
+      form.reset();
     } else {
-      createUser(email, password)
-        .then((result) => {
-          console.log(result.user);
-          setError("");
-        })
-        .catch((error) => {
-          setError(error.message);
-        });
+      if (password !== confirmPassword) {
+        setError("password doesn't match!!");
+      } else {
+        createUser(email, password)
+          .then((result) => {
+            console.log(result.user);
+            handleUserPhotoName(name, photoURL);
+            navigate(from, { replace: true });
+            form.reset();
+            setError("");
+            //----Toast----//
+            toast.success("Sign up succesfully!!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            });
+          })
+          .catch((error) => {
+            setError(error.message);
+          });
+      }
     }
+  };
+
+  //------User name&photo --------//
+  const handleUserPhotoName = (name, photoURL) => {
+    UpdateProfile(name, photoURL)
+      .then((result) => console.log(result.user))
+      .catch((error) => console.error(error.message));
+  };
+
+  //-------GoogleSignIn------//
+  const handleGoogleSignIn = (event) => {
+    event.preventDefault();
+    googleSignIn(provider)
+      .then((result) => {
+        console.log(result.user);
+        //----Toast----//
+        toast.success("Login succesfuly!!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        //----Toast----//
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
   return (
@@ -98,6 +157,7 @@ const SingUp = () => {
                   required
                 />
               </div>
+              <p className="text-red-800">{error}</p>
               <div className="form-control mt-6">
                 <button className="btn btn-accent text-white hover:translate-y-1">
                   Register
@@ -110,13 +170,17 @@ const SingUp = () => {
                 </Link>
               </div>
               <div className="flex justify-center items-center gap-5 ">
-                <i className="bg-slate-200 text-2xl p-2 rounded-full cursor-pointer hover:translate-y-1 hover:bg-black hover:text-white">
+                <button
+                  onClick={handleGoogleSignIn}
+                  className="bg-slate-200 text-2xl p-2 rounded-full cursor-pointer hover:translate-y-1 hover:bg-black hover:text-white"
+                >
                   <FaGoogle />
-                </i>
-                <i className="bg-slate-200 text-2xl p-2 rounded-full cursor-pointer hover:translate-y-1 hover:bg-black hover:text-white">
+                </button>
+                <button className="bg-slate-200 text-2xl p-2 rounded-full cursor-pointer hover:translate-y-1 hover:bg-black hover:text-white">
                   <FaGithub />
-                </i>
+                </button>
               </div>
+              <p className="text-center">Login with social media!</p>
             </form>
           </div>
         </div>
