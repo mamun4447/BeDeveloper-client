@@ -11,7 +11,7 @@ const auth = getAuth(app);
 export const AuthContext = createContext();
 
 const UserContext = ({ children }) => {
-  const [user, setUser] = useState({ displayName: "Mamun" });
+  const [user, setUser] = useState(null);
 
   //-------Create User With Email & Password------//
   const createUser = (email, password) => {

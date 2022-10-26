@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaChessQueen } from "react-icons/fa";
-import SingleCourse from "../SingleCourse";
+import SingleCourse from "../Courses/SingleCourse";
 
 const Home = () => {
   const datas = useLoaderData();
@@ -64,7 +64,7 @@ const Home = () => {
         </div>
         <div className="relative px-4 sm:px-0">
           <div className="absolute inset-0 bg-gray-100 h-12/9" />
-          <div className="container mx-auto grid grid-cols-3 gap-2">
+          <div className="container mx-auto grid grid-cols-3 gap-10">
             {datas.map((data) => (
               <SingleCourse key={data.id} data={data}></SingleCourse>
             ))}

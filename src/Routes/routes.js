@@ -7,11 +7,15 @@ import LogIn from "../components/Authentech/LogIn";
 import SingUp from "../components/Authentech/SingUp";
 import Blogs from "../components/NavComponent/Blogs";
 import Details from "../components/Details";
+import ErrorPage from "../components/ErrorPage";
+import CheckOut from "../components/Courses/CheckOut";
+import FAQ from "../components/NavComponent/FAQ";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -26,6 +30,12 @@ export const router = createBrowserRouter([
       {
         path: "/courses/:id",
         element: <Details />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/data/${params.id}`),
+      },
+      {
+        path: "/checkout/:id",
+        element: <CheckOut />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/data/${params.id}`),
       },
@@ -46,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: "signup",
         element: <SingUp />,
+      },
+      {
+        path: "/faq",
+        element: <FAQ />,
       },
     ],
   },

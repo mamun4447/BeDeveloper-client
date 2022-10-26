@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SingleCourse = ({ data }) => {
-  const { title, id } = data;
+  const { title, id, image, description } = data;
   return (
     <div>
       <Link
@@ -10,11 +10,11 @@ const SingleCourse = ({ data }) => {
         className="card w-full bg-base-100 shadow-xl image-full h-96"
       >
         <figure>
-          <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
+          <img src={image} alt="Shoes" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{title}</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <h2 className=" text-5xl">{title}</h2>
+          <p>{description.slice(0, 30)}...More</p>
         </div>
       </Link>
     </div>
