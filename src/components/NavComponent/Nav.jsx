@@ -51,17 +51,7 @@ const Nav = () => {
               </label>
               <p className="underline-offset-1">Light/Dark</p>
             </div>
-            {/* --------Home------- */}
-            <li>
-              <Link
-                to="/"
-                aria-label="Our product"
-                title="Our product"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                Home
-              </Link>
-            </li>
+
             {/* ----------Courses------- */}
             <li>
               <Link
@@ -95,17 +85,7 @@ const Nav = () => {
                 Blogs
               </Link>
             </li>
-            {/* -----------About Us----------- */}
-            <li>
-              <Link
-                to="/about"
-                aria-label="About us"
-                title="About us"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                About us
-              </Link>
-            </li>
+
             {/* Condition if user available */}
             {/* SignUp */}
             {user ? (

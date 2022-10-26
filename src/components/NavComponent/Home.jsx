@@ -50,7 +50,7 @@ const Home = () => {
                 type="submit"
                 className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md btn-accent hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
               >
-                Get Premium <FaChessQueen className="ml-2" />
+                Tutorials
               </Link>
               <Link
                 to="/about"

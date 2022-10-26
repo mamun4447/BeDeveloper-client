@@ -12,8 +12,8 @@ const SingleCourse = ({ data }) => {
         <figure>
           <img src={image} alt="Shoes" />
         </figure>
-        <div className="card-body">
-          <h2 className=" text-5xl">{title}</h2>
+        <div className="card-body ">
+          <h2 className=" text-4xl">{title}</h2>
           <p>{description.slice(0, 30)}...More</p>
         </div>
       </Link>
