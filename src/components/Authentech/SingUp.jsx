@@ -3,11 +3,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../context/UserContext";
 import { toast } from "react-toastify";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const SingUp = () => {
   const provider = new GoogleAuthProvider();
-  const { user, createUser, UpdateProfile, googleSignIn } =
+  const GitProvider = new GithubAuthProvider();
+  const { user, createUser, UpdateProfile, googleSignIn, gitHubSignIn } =
     useContext(AuthContext);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -68,25 +69,57 @@ const SingUp = () => {
   //-------GoogleSignIn------//
   const handleGoogleSignIn = (event) => {
     event.preventDefault();
-    googleSignIn(provider)
-      .then((result) => {
-        console.log(result.user);
-        //----Toast----//
-        toast.success("Login succesfuly!!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
+    if (user) {
+      setError("User Already signed in!!");
+    } else {
+      googleSignIn(provider)
+        .then((result) => {
+          console.log(result.user);
+          navigate(from, { replace: true });
+          //----Toast----//
+          toast.success("Login succesfuly!!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        })
+        .catch((error) => {
+          setError(error.message);
         });
-        //----Toast----//
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+    }
+  };
+
+  //---------GitHub signIn----------//
+  const handleGitHubSignIn = (event) => {
+    event.preventDefault();
+
+    if (user) {
+      setError("User already signed in!!");
+    } else {
+      gitHubSignIn(GitProvider)
+        .then((result) => {
+          console.log(result.user);
+          navigate(from, { replace: true });
+          setError("");
+          //----Toast----//
+          toast.success("Login succesfuly!!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        })
+        .catch((error) => setError(error.message));
+    }
   };
 
   return (
@@ -176,7 +209,10 @@ const SingUp = () => {
                 >
                   <FaGoogle />
                 </button>
-                <button className="bg-slate-200 text-2xl p-2 rounded-full cursor-pointer hover:translate-y-1 hover:bg-black hover:text-white">
+                <button
+                  onClick={handleGitHubSignIn}
+                  className="bg-slate-200 text-2xl p-2 rounded-full cursor-pointer hover:translate-y-1 hover:bg-black hover:text-white"
+                >
                   <FaGithub />
                 </button>
               </div>

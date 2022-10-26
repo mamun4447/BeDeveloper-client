@@ -245,17 +245,7 @@ const Nav = () => {
                         </label>
                         <p className="underline-offset-1">Light/Datr</p>
                       </div>
-                      {/* ---------Home---------- */}
-                      <li>
-                        <Link
-                          to="/"
-                          aria-label="Our product"
-                          title="Our product"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 cursor-pointer"
-                        >
-                          Home
-                        </Link>
-                      </li>
+
                       {/* -----------courses--------- */}
                       <li>
                         <Link
@@ -289,32 +279,22 @@ const Nav = () => {
                           Blogs
                         </Link>
                       </li>
-                      {/* -------About us----------- */}
-                      <li>
-                        <Link
-                          to="/about"
-                          aria-label="Our product"
-                          title="Our product"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          About Us
-                        </Link>
-                      </li>
+
                       {/* <-------------SignIn,SignUp or User Conditional------------> */}
                       {user ? (
                         <ul className="flex-col">
                           <li className="mb-3">
-                            <Link
-                              to="/signup"
+                            <button
+                              onClick={LogOut}
                               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                               aria-label="Sign up"
                               title="Sign up"
                             >
                               SignOut
-                            </Link>
+                            </button>
                           </li>
                           <Link
-                            to="/phofile"
+                            to="/profile"
                             className="avatar flex items-center gap-2 "
                           >
                             <div className="w-8 rounded-full">
