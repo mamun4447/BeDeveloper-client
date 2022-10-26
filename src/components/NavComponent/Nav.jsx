@@ -25,14 +25,14 @@ const Nav = () => {
           </Link>
           <ul className="flex items-center hidden space-x-8 lg:flex">
             {/* -------Toggle------ */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 text-xs">
               <label className="swap swap-rotate">
                 {/* <!-- this hidden checkbox controls the state --> */}
                 <input type="checkbox" />
 
                 {/* <!-- sun icon --> */}
                 <svg
-                  className="swap-off fill-current w-10 h-10"
+                  className="swap-on fill-current w-10 h-10"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                 >
@@ -41,7 +41,7 @@ const Nav = () => {
 
                 {/* <!-- moon icon --> */}
                 <svg
-                  className="swap-on fill-current w-10 h-10"
+                  className="swap-off fill-current w-10 h-10"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                 >
@@ -64,7 +64,7 @@ const Nav = () => {
             {/* ----------Courses------- */}
             <li>
               <Link
-                to="/courses"
+                to="/Courses"
                 aria-label="Our product"
                 title="Our product"
                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -255,12 +255,12 @@ const Nav = () => {
                           to="/"
                           aria-label="Our product"
                           title="Our product"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 cursor-pointer"
                         >
                           Home
                         </Link>
                       </li>
-                      {/* -----------Courses--------- */}
+                      {/* -----------courses--------- */}
                       <li>
                         <Link
                           to="/courses"
