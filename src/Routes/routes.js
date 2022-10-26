@@ -6,7 +6,7 @@ import AboutUs from "../components/NavComponent/AboutUs";
 import LogIn from "../components/Authentech/LogIn";
 import SingUp from "../components/Authentech/SingUp";
 import Blogs from "../components/NavComponent/Blogs";
-import Details from "../components/Details";
+import Details from "../components/Courses/Details";
 import ErrorPage from "../components/ErrorPage";
 import CheckOut from "../components/Courses/CheckOut";
 import FAQ from "../components/NavComponent/FAQ";
