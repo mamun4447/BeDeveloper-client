@@ -125,7 +125,7 @@ const SingUp = () => {
   return (
     <div>
       <div className=" bg-base-200">
-        <div className="hero-content flex-col">
+        <div className="container  mx-auto hero-content flex-col">
           <div className="text-center">
             <h1 className="text-5xl font-bold py-2">Login now!</h1>
           </div>

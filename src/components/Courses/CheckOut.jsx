@@ -35,7 +35,7 @@ const CheckOut = () => {
                       />
                     </svg>
                   </span>
-                  <h1>{data.title} </h1>
+                  <h1>{data.heading} </h1>
                 </h2>
                 <p className="text-base text-gray-700 md:text-lg">
                   {data.description.slice(0, 150)}
@@ -49,7 +49,7 @@ const CheckOut = () => {
                 />
               </div>
               <p className="max-w-xl mb-4 text-base text-gray-700 sm:mx-auto">
-                {data.description.slice(150)}
+                {data.description.slice(140)}
               </p>
             </div>
           </div>
