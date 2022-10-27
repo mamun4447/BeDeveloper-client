@@ -5,7 +5,6 @@ import Pdf from "react-to-pdf";
 const ref = React.createRef();
 const Details = () => {
   const Datas = useLoaderData();
-  // console.log(Datas);
   return (
     <div>
       {Datas.map((data) => (

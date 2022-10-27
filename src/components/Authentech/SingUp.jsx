@@ -35,7 +35,6 @@ const SingUp = () => {
       } else {
         createUser(email, password)
           .then((result) => {
-            console.log(result.user);
             handleUserPhotoName(name, photoURL);
             navigate(from, { replace: true });
             form.reset();
@@ -62,8 +61,8 @@ const SingUp = () => {
   //------User name&photo --------//
   const handleUserPhotoName = (name, photoURL) => {
     UpdateProfile(name, photoURL)
-      .then((result) => console.log(result.user))
-      .catch((error) => console.error(error.message));
+      .then((result) => {})
+      .catch((error) => setError(error.message));
   };
 
   //-------GoogleSignIn------//
@@ -74,7 +73,6 @@ const SingUp = () => {
     } else {
       googleSignIn(provider)
         .then((result) => {
-          console.log(result.user);
           navigate(from, { replace: true });
           //----Toast----//
           toast.success("Login succesfuly!!", {
@@ -103,7 +101,6 @@ const SingUp = () => {
     } else {
       gitHubSignIn(GitProvider)
         .then((result) => {
-          console.log(result.user);
           navigate(from, { replace: true });
           setError("");
           //----Toast----//

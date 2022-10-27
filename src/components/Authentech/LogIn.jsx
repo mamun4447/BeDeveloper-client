@@ -30,7 +30,6 @@ const LogIn = () => {
     } else {
       signIn(email, password)
         .then((result) => {
-          console.log(result.user);
           form.reset();
           setError("");
           //----Toast----//
@@ -59,7 +58,6 @@ const LogIn = () => {
     } else {
       googleSignIn(provider)
         .then((result) => {
-          console.log(result.user);
           navigate(from, { replace: true });
           setError("");
 
@@ -90,7 +88,6 @@ const LogIn = () => {
     } else {
       gitHubSignIn(GitProvider)
         .then((result) => {
-          console.log(result.user);
           setError("");
           navigate(from, { replace: true });
           //----Toast----//
