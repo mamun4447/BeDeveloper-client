@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import Pdf from "react-to-pdf";
 
+const ref = React.createRef();
 const Details = () => {
   const Datas = useLoaderData();
   // console.log(Datas);
@@ -14,10 +16,19 @@ const Details = () => {
               className="max-w-sm rounded-lg shadow-2xl col-span-1 sm:mx-auto"
               alt=""
             />
-            <div className="col-span-1 lg:col-span-2 text-center lg:text-left">
+            <div
+              ref={ref}
+              className="col-span-1 lg:col-span-2 text-center lg:text-left"
+            >
               <h1 className="text-5xl font-bold">
                 {data.title}{" "}
-                <button className="btn btn-xs btn-accent">Pdf</button>
+                <Pdf targetRef={ref} filename="code-example.pdf">
+                  {({ toPdf }) => (
+                    <button className="btn btn-xs btn-accent" onClick={toPdf}>
+                      Pdf
+                    </button>
+                  )}
+                </Pdf>
               </h1>
               <p className="py-6">{data.description}</p>
               <Link to={`/checkout/${data.id}`} className="btn btn-primary">

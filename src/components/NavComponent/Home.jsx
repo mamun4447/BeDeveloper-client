@@ -37,11 +37,10 @@ const Home = () => {
                     />
                   </svg>
                 </span>
-                The quick, brown fox jumps over a lazy dog
+                Have a safe juorny with BeDeveloper
               </h2>
               <p className="text-base text-gray-700 md:text-lg">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque rem aperiam, eaque ipsa quae.
+                You can be the one, who can change the world with your knowledge
               </p>
             </div>
             <div className="flex items-center sm:justify-center">
