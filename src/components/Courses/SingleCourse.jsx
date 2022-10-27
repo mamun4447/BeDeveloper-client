@@ -7,7 +7,7 @@ const SingleCourse = ({ data }) => {
     <div>
       <Link
         to={`/courses/${id}`}
-        className="card w-full bg-base-100 shadow-xl image-full h-96"
+        className="card z-0 w-full bg-base-100 shadow-xl image-full h-96"
       >
         <figure>
           <img src={image} alt="Shoes" />

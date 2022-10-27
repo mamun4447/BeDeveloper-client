@@ -9,7 +9,7 @@ const UserProfile = () => {
   return (
     <div>
       {user ? (
-        <div className="flex items-center p-2 w-1/4 shadow-md my-20 mx-auto gap-2 rounded-md">
+        <div className="flex flex-col md:flex-row lg:flex-row text-center items-center p-2 w-3/4 md:w-1/2 lg:w-1/4 shadow-md my-20 mx-auto gap-2 rounded-md">
           <div className="">
             {user?.photoURL ? (
               <img className="rounded-full" src={user.photoURL} alt="" />
@@ -19,7 +19,7 @@ const UserProfile = () => {
               </i>
             )}
           </div>
-          <div>
+          <div className="md:text-left lg:text-left">
             {user?.displayName ? (
               <h3 className="text-2xl">Name: {user.displayName}</h3>
             ) : (
