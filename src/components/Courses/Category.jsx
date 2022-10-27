@@ -7,7 +7,7 @@ const Category = ({ data }) => {
     <div className="">
       <Link
         to={`/courses/${id}`}
-        className="btn btn-accent cursor-pointer text-center w-44 mb-2"
+        className="btn btn-accent cursor-pointer text-center w-44 mb-2 hover:-translate-y-1"
       >
         {title}
       </Link>
