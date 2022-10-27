@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCrown } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 import Pdf from "react-to-pdf";
 
@@ -31,7 +32,7 @@ const Details = () => {
               </h1>
               <p className="py-6">{data.description}</p>
               <Link to={`/checkout/${data.id}`} className="btn btn-primary">
-                Check Out
+                <FaCrown /> Get Premium access
               </Link>
             </div>
           </div>
