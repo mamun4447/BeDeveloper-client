@@ -22,18 +22,18 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/data"),
+        loader: () => fetch("https://server-side-nu.vercel.app/data"),
       },
       {
         path: "/courses",
         element: <Courses />,
-        loader: () => fetch("http://localhost:5000/data"),
+        loader: () => fetch("https://server-side-nu.vercel.app/data"),
       },
       {
         path: "/courses/:id",
         element: <Details />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/data/${params.id}`),
+          fetch(`https://server-side-nu.vercel.app/data/${params.id}`),
       },
       {
         path: "/checkout/:id",
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
           </PrivetRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/data/${params.id}`),
+          fetch(`https://server-side-nu.vercel.app/data/${params.id}`),
       },
 
       {
