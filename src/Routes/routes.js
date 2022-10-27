@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../components/NavComponent/Home";
 import Main from "../layout/Main";
 import Courses from "../components/Courses/Courses";
-import AboutUs from "../components/NavComponent/AboutUs";
 import LogIn from "../components/Authentech/LogIn";
 import SingUp from "../components/Authentech/SingUp";
 import Blogs from "../components/NavComponent/Blogs";
@@ -46,10 +45,6 @@ export const router = createBrowserRouter([
           fetch(`https://server-side-nu.vercel.app/data/${params.id}`),
       },
 
-      {
-        path: "/about",
-        element: <AboutUs />,
-      },
       {
         path: "/blogs",
         element: <Blogs />,
